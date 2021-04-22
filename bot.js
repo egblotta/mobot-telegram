@@ -17,7 +17,7 @@ bot.hears('hi', (ctx) => ctx.reply('Hey there'))
 //responde con el nombre cuando se tipea "hola"
 bot.hears('hola', (ctx) => {
     //console.log(ctx.from)
-    ctx.reply('Hola '+ctx.from.first_name + ', te gustaria que te recomiende una peli para ver hoy?')
+    ctx.reply(`Hola ${ctx.from.first_name}, te gustaria que te recomiende una peli para ver hoy?`)
 })
 
 bot.hears(['si','si gracias', 'bueno'], (ctx) => {
