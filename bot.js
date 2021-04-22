@@ -20,14 +20,24 @@ bot.hears('hola', (ctx) => {
     ctx.reply(`Hola ${ctx.from.first_name}, te gustaria que te recomiende una peli para ver hoy?`)
 })
 
-bot.hears(['si','si gracias', 'bueno'], (ctx) => {
+bot.hears(['si','si gracias', 'bueno', 'dale', 'bueno dale', 'ok'], (ctx) => {
     //console.log(ctx.from)
     ctx.reply('Genial! que tipos de peli te gustan? Accion, Thriller, Drama...')
 })
 
 bot.hears(['Accion', 'accion', 'ACCION'], (ctx) => {
     //console.log(ctx.from)
-    ctx.reply('Puedo recomendarte lo siguiente: ')
+    ctx.reply('Excelente eleccion, puedo recomendarte lo siguiente: ')
+})
+
+bot.hears(['Drama', 'drama', 'DRAMA'], (ctx) => {
+    //console.log(ctx.from)
+    ctx.reply('Ahh, eres alguien apasionado, puedo recomendarte lo siguiente: ')
+})
+
+bot.hears(['Thriller', 'thriller', 'THRILLER'], (ctx) => {
+    //console.log(ctx.from)
+    ctx.reply('Ahh, eres como yo, te gusta el miedo, puedo recomendarte lo siguiente: ')
 })
 
 bot.hears(['no','no gracias'], (ctx) => {
