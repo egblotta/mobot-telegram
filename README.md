@@ -27,6 +27,14 @@ O también
 
 Esto lo instala como dependencia opcional de desarrollador.
 
+
+#### Crear una copia de .env y actualizar el token
+
+    $ cp .env-sample .env
+
+pedir el token y pegarlo dentro de la variable de entorno
+
+
 # Correr el Bot
 
     $ node bot.js
