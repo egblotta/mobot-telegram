@@ -21,7 +21,7 @@ Opcional:
 #### Instalar nodemon para facilitar el desarrollo
     $ npm install --save-dev nodemon
 
-O sinó:
+O también
 
     $ npm i nodemon -D
 
@@ -30,3 +30,9 @@ Esto lo instala como dependencia opcional de desarrollador.
 # Correr el Bot
 
     $ node bot.js
+
+O con nodemon
+
+    $ nodemon bot.js
+
+
