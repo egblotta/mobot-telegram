@@ -7,9 +7,6 @@ const bot = new Telegraf('1700786959:AAHm1tTr36O2UHFJfPxerPxbzx7KSkApwhg')
 //ctx hace referencia a los datos que se reciben en el chat
 bot.start((ctx) => bot.telegram.sendMessage(ctx.chat.id,`Hola ${ctx.from.first_name}, te gustaria que te recomiende una peli para ver hoy?` ))
 
-// /help
-bot.help((ctx) => ctx.reply('Send me a sticker'))
-
 // /setings
 bot.settings((ctx) => ctx.reply('Settings'))
 
@@ -47,7 +44,7 @@ bot.hears(['Drama', 'drama', 'DRAMA'], async (ctx) => {
 bot.hears(['Thriller', 'thriller', 'THRILLER'], async (ctx) => {
     //console.log(ctx.from)
     ctx.reply('Ahh, eres de los mios, te gusta el miedo, puedo recomendarte lo siguiente: ')
-    const res = await axios.get('https://www.omdbapi.com/?t=it&apikey=51c3b968')
+    const res = await axios.get(`${res.data.Poster}, https://www.omdbapi.com/?t=it&apikey=51c3b968`)
     bot.telegram.sendMessage(ctx.chat.id, res.data.Poster)
 })
 
