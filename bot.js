@@ -48,6 +48,16 @@ bot.hears(['Thriller', 'thriller', 'THRILLER'], async (ctx) => {
     bot.telegram.sendMessage(ctx.chat.id, res.data.Poster)
 })
 
+bot.hears(['Comedia', 'comedia', 'COMEDIA'], async (ctx) => {
+    //console.log(ctx.from)
+    ctx.reply('Para disfrutar con la familia o entre amigos, puedo recomendarte lo siguiente: ')
+
+    //peticion asincrona
+    const res = await axios.get('http://www.omdbapi.com/?t=la+pantera+rosa&y=2006&plot=full')
+    //console.log(res.data.Poster)
+    bot.telegram.sendMessage(ctx.chat.id, res.data.Poster)
+})
+
 bot.hears(['no','no gracias'], (ctx) => {
     //console.log(ctx.from)
     ctx.reply('Bueno, si me necesitas aca voy a estar.')
