@@ -1,9 +1,9 @@
 # en .env van las variables ocultas del sistema, como tokens y claves
 .env
 
-# una carpetita en la que estoy trabajando temporalmente 
+# una carpetita en la que estaba trabajando temporalmente 
 # @lasheras
-bot/*
+#bot/*
 
 
 
