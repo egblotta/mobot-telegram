@@ -33,7 +33,7 @@ bot.hears(['Accion', 'accion', 'ACCION'], async (ctx) => {
 })
 
 bot.hears(['Drama', 'drama', 'DRAMA'], async (ctx) => {
-    //console.log(ctx.from)
+    
     ctx.reply('Ideal para un dia como hoy, puedo recomendarte lo siguiente: ')
 
     //peticion asincrona
@@ -43,16 +43,22 @@ bot.hears(['Drama', 'drama', 'DRAMA'], async (ctx) => {
 })
 
 bot.hears(['Thriller', 'thriller', 'THRILLER'], async (ctx) => {
-    //console.log(ctx.from)
+    
     ctx.reply('Ahh, eres de los mios, te gusta el miedo, puedo recomendarte lo siguiente: ')
     const res = await axios.get(`${res.data.Poster}, https://www.omdbapi.com/?t=it&apikey=51c3b968`)
     bot.telegram.sendMessage(ctx.chat.id, res.data.Poster)
 })
 
 bot.hears(['Romance', 'romance', 'ROMANCE'], async (ctx) => {
-    //console.log(ctx.from)
+    
     ctx.reply('Veo que nos pusimos amorosos! Puedo recomendarte lo siguiente: ')
     const res = await axios.get(`${res.data.Poster}, http://www.omdbapi.com/?t=Me+after+you&y=2016&plot=full`)
+
+bot.hears(['Comedia', 'comedia', 'COMEDIA'], async (ctx) => {
+
+    ctx.reply('Para disfrutar con la familia o entre amigos, puedo recomendarte lo siguiente: ')
+    const res = await axios.get('http://www.omdbapi.com/?t=la+pantera+rosa&y=2006&plot=full')
+    //console.log(res.data.Poster)
     bot.telegram.sendMessage(ctx.chat.id, res.data.Poster)
 })
 
