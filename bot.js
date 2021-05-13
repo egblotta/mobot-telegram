@@ -33,7 +33,7 @@ bot.hears(['Accion', 'accion', 'ACCION'], async (ctx) => {
 
 bot.hears(['Drama', 'drama', 'DRAMA'], async (ctx) => {
     //console.log(ctx.from)
-    ctx.reply('Ideal para un dia como hoy , puedo recomendarte lo siguiente: ')
+    ctx.reply('Ideal para un dia como hoy, puedo recomendarte lo siguiente: ')
 
     //peticion asincrona
     const res = await axios.get('https://www.omdbapi.com/?t=joker&apikey=51c3b968')
