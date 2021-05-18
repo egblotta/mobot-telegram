@@ -2,7 +2,7 @@ const { Telegraf } = require('telegraf')
 const omdb = new (require('omdbapi'))('51c3b968');
 const axios = require('axios')
 
-const bot = new Telegraf('1700786959:AAHm1tTr36O2UHFJfPxerPxbzx7KSkApwhg')
+const bot = new Telegraf('1700786959:AAHm1tTr36O2UHFJfPxerPxbzx7KSkApwhg') 
 
 
 //ctx hace referencia a los datos que se reciben en el chat

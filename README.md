@@ -41,6 +41,7 @@ pedir el token y pegarlo dentro de la variable de entorno
 
 O con nodemon
 
-    $ nodemon bot.js
+    $ npm run dev 
+    (en caso de que nodemon esté instalado como 'dev' "-D")
 
 
