@@ -52,6 +52,7 @@ bot.hears(['Romance', 'romance', 'ROMANCE'], async (ctx) => {
     ctx.reply('Veo que nos pusimos amorosos! Puedo recomendarte lo siguiente: ')
     const res = await axios.get(`${res.data.Poster}, http://www.omdbapi.com/?t=Me+after+you&y=2016&plot=full`)
     bot.telegram.sendMessage(ctx.chat.id, res.data.Poster)
+})
 
 bot.hears(['Comedia', 'comedia', 'COMEDIA'], async (ctx) => {
 
@@ -63,6 +64,5 @@ bot.hears(['Comedia', 'comedia', 'COMEDIA'], async (ctx) => {
 bot.hears(['no','no gracias'], (ctx) => {
     ctx.reply('Bueno, si me necesitas aca voy a estar.')
 })
-
 
 bot.launch()
