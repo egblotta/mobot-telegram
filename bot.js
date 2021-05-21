@@ -1,9 +1,9 @@
 const { Telegraf } = require('telegraf')
-const omdb = new (require('omdbapi'))('51c3b968');
 const axios = require('axios')
 
 const bot = new Telegraf('1700786959:AAHm1tTr36O2UHFJfPxerPxbzx7KSkApwhg')
-
+const key = '51c3b968'
+const endPoint = 'https://www.omdbapi.com/?t='
 
 //ctx hace referencia a los datos que se reciben en el chat
 bot.start((ctx) => bot.telegram.sendMessage(ctx.chat.id,`Hola ${ctx.from.first_name}, te gustaria que te recomiende una peli para ver hoy?` ))
@@ -11,54 +11,100 @@ bot.start((ctx) => bot.telegram.sendMessage(ctx.chat.id,`Hola ${ctx.from.first_n
 // /setings
 bot.settings((ctx) => ctx.reply('Settings'))
 
-//para escuchar cuando se tipea hi
-bot.hears('hi', (ctx) => ctx.reply('Hey there'))        
-
 //responde con el nombre cuando se tipea "hola"
 bot.hears('hola', (ctx) => {
-    //console.log(ctx.from)
     ctx.reply(`Hola ${ctx.from.first_name}, te gustaria que te recomiende una peli para ver hoy?`)
 })
 
 bot.hears(['si','si gracias', 'bueno', 'dale', 'bueno dale', 'ok'], (ctx) => {
-    //console.log(ctx.from)
     ctx.reply('Genial! que tipos de peli te gustan? Accion, Thriller, Drama...')
 })
 
 bot.hears(['Accion', 'accion', 'ACCION'], async (ctx) => {
-    //console.log(ctx.from)
     ctx.reply('Excelente eleccion, puedo recomendarte lo siguiente: ')
-    const res = await axios.get('https://www.omdbapi.com/?t=avengers&apikey=51c3b968')
-    bot.telegram.sendMessage(ctx.chat.id, res.data.Poster)
+    const res = await axios.get(endPoint+'avengers&apikey='+key)
+    try {
+        bot.telegram.sendMessage(ctx.chat.id, res.data.Poster+
+            '\nDirigida por: '+res.data.Director+
+            '\nAño de estreno: '+res.data.Year+
+            '\nActores: '+res.data.Actors+
+            '\nRating de imdb: '+res.data.imdbRating+
+            '\nDescripción: '+res.data.Plot	
+            )
+    } catch (error) {
+        console.error(error.message)
+        bot.telegram.sendMessage(ctx.chat.id, error.message)
+    } 
 })
 
 bot.hears(['Drama', 'drama', 'DRAMA'], async (ctx) => {
     
     ctx.reply('Ideal para un dia como hoy, puedo recomendarte lo siguiente: ')
-    //peticion asincrona
-    const res = await axios.get('https://www.omdbapi.com/?t=joker&apikey=51c3b968')
-    bot.telegram.sendMessage(ctx.chat.id, res.data.Poster)
+    const res = await axios.get(endPoint+'joker&apikey='+key)
+    try {
+        bot.telegram.sendMessage(ctx.chat.id, res.data.Poster+
+            '\nDirigida por: '+res.data.Director+
+            '\nAño de estreno: '+res.data.Year+
+            '\nActores: '+res.data.Actors+
+            '\nRating de imdb: '+res.data.imdbRating+
+            '\nDescripción: '+res.data.Plot	
+            )
+    } catch (error) {
+        console.error(error.message)
+        bot.telegram.sendMessage(ctx.chat.id, error.message)
+    }    
 })
 
 bot.hears(['Thriller', 'thriller', 'THRILLER'], async (ctx) => {
     
     ctx.reply('Ahh, eres de los mios, te gusta el miedo, puedo recomendarte lo siguiente: ')
-    const res = await axios.get(`${res.data.Poster}, https://www.omdbapi.com/?t=it&apikey=51c3b968`)
-    bot.telegram.sendMessage(ctx.chat.id, res.data.Poster)
+    const res = await axios.get(endPoint+'it&apikey='+key)
+    try {
+        bot.telegram.sendMessage(ctx.chat.id, res.data.Poster+
+            '\nDirigida por: '+res.data.Director+
+            '\nAño de estreno: '+res.data.Year+
+            '\nActores: '+res.data.Actors+
+            '\nRating de imdb: '+res.data.imdbRating+
+            '\nDescripción: '+res.data.Plot	
+            )
+    } catch (error) {
+        console.error(error.message)
+        bot.telegram.sendMessage(ctx.chat.id, error.message)
+    } 
 })
 
-bot.hears(['Romance', 'romance', 'ROMANCE'], async (ctx) => {
-    
+bot.hears(['Romance', 'romance', 'ROMANCE'], async (ctx) => {    
     ctx.reply('Veo que nos pusimos amorosos! Puedo recomendarte lo siguiente: ')
-    const res = await axios.get(`${res.data.Poster}, http://www.omdbapi.com/?t=Me+after+you&y=2016&plot=full`)
-    bot.telegram.sendMessage(ctx.chat.id, res.data.Poster)
+    const res = await axios.get(endPoint+'50&apikey='+key)
+    try {
+        bot.telegram.sendMessage(ctx.chat.id, res.data.Poster+
+            '\nDirigida por: '+res.data.Director+
+            '\nAño de estreno: '+res.data.Year+
+            '\nActores: '+res.data.Actors+
+            '\nRating de imdb: '+res.data.imdbRating+
+            '\nDescripción: '+res.data.Plot	
+            )
+    } catch (error) {
+        console.error(error.message)
+        bot.telegram.sendMessage(ctx.chat.id, error.message)
+    } 
 })
 
 bot.hears(['Comedia', 'comedia', 'COMEDIA'], async (ctx) => {
-
     ctx.reply('Para disfrutar con la familia o entre amigos, puedo recomendarte lo siguiente: ')
-    const res = await axios.get('http://www.omdbapi.com/?t=la+pantera+rosa&y=2006&plot=full')
-    bot.telegram.sendMessage(ctx.chat.id, res.data.Poster)
+    const res = await axios.get(endPoint+'minions&apikey='+key)
+    try {
+        bot.telegram.sendMessage(ctx.chat.id, res.data.Poster+
+            '\nDirigida por: '+res.data.Director+
+            '\nAño de estreno: '+res.data.Year+
+            '\nActores: '+res.data.Actors+
+            '\nRating de imdb: '+res.data.imdbRating+
+            '\nDescripción: '+res.data.Plot	
+            )
+    } catch (error) {
+        console.error(error.message)
+        bot.telegram.sendMessage(ctx.chat.id, error.message)
+    } 
 })
 
 bot.hears(['no','no gracias'], (ctx) => {
