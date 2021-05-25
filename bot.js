@@ -17,7 +17,7 @@ bot.hears('hola', (ctx) => {
 })
 
 bot.hears(['si','si gracias', 'bueno', 'dale', 'bueno dale', 'ok'], (ctx) => {
-    ctx.reply('Genial! que tipos de peli te gustan? Accion, Thriller, Drama...')
+    ctx.reply('Genial! que tipos de peli te gustan? Accion, Thriller, Drama, Romance, Comedia')
 })
 
 bot.hears(['Accion', 'accion', 'ACCION'], async (ctx) => {
