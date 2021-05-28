@@ -15,6 +15,8 @@ Opcional:
 #### Clonar el repositorio
     $ git clone https://github.com/egblotta/mobot-telegram
 
+#### Para descargar las dependencias
+    $ npm rebuild
 #### Instalar telegraf bot API
     $ npm install telegraf
 
