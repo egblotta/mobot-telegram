@@ -1,19 +1,22 @@
+
 require('dotenv').config()
 
-const { Telegraf } = require('telegraf')
-const axios = require('axios')
 const bot = new Telegraf(process.env.BOT_TOKEN) 
-const key = process.env.OMDBAPI_KEY;
-const endPoint = 'https://www.omdbapi.com/?t='
-const functions = require('')
+
+export class CommandsController {
+    
+    // responde con el nombre cuando se tipea "hola"
+    bot.hears('hola', (ctx) => {
+        ctx.reply(`Hola ${ctx.from.first_name}, te gustaria que te recomiende una peli para ver hoy?`)
+    })
+
+
+}
 
 
 
-// ctx hace referencia a los datos que se reciben en el chat
-bot.start((ctx) => bot.telegram.sendMessage(ctx.chat.id,`Hola ${ctx.from.first_name}, te gustaria que te recomiende una peli para ver hoy?` ))
 
-// setings
-bot.settings((ctx) => ctx.reply('Settings'))
+
 
 // responde con el nombre cuando se tipea "hola"
 bot.hears('hola', (ctx) => {
@@ -114,5 +117,3 @@ bot.hears(['Comedia', 'comedia', 'COMEDIA'], async (ctx) => {
 bot.hears(['no','no gracias'], (ctx) => {
     ctx.reply('Bueno, si me necesitas aca voy a estar.')
 })
-
-bot.launch()
