@@ -1,0 +1,1 @@
+# En este modulo podemos dividir todos los recursos del bot
