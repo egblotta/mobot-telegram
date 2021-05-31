@@ -18,7 +18,7 @@ async function run(){
     try {
         await client.connect();
         await listDatabases(client);
-        await client.db("admin").command({ ping: 1 });
+        await client.db("MobotDB").command({ ping: 1 });
         console.log("Connected successfully to server");
     } catch (e) {
         console.error(e);
@@ -29,9 +29,15 @@ async function run(){
 
 run().catch(console.error);
 
+const pizzaDocument = {
+    name: "Neapolitan pizza",
+    shape: "round",
+    toppings: [ "San Marzano tomatoes", "mozzarella di bufala cheese" ],
+};
+
 async function listDatabases(client){
     databasesList = await client.db().admin().listDatabases();
-
     console.log("Databases:");
     databasesList.databases.forEach(db => console.log(` - ${db.name}`));
 };
+
