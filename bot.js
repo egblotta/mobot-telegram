@@ -15,6 +15,7 @@ bot.settings((ctx) => ctx.reply('Settings'))
 //responde con el nombre cuando se tipea "hola"
 bot.hears('hola', (ctx) => {
     ctx.reply(`Hola ${ctx.from.first_name}, te gustaria que te recomiende una peli para ver hoy?`)
+    bot.sendMessage(chatID, "Message text", opts);
 })
 
 bot.hears(['si','si gracias', 'bueno', 'dale', 'bueno dale', 'ok'], (ctx) => {
@@ -108,8 +109,28 @@ bot.hears(['Comedia', 'comedia', 'COMEDIA'], async (ctx) => {
     } 
 })
 
+bot.hears(['Terror', 'terror', 'TERROR'], async (ctx) => {
+    
+    ctx.reply('Hoy es noche de terror, me gusta la idea! puedo recomendarte lo siguiente: ')
+    const res = await axios.get(endPoint+'the-ring&apikey='+key)
+    try {
+        bot.telegram.sendMessage(ctx.chat.id, res.data.Poster+
+            '\nDirigida por: '+res.data.Director+
+            '\nAño de estreno: '+res.data.Year+
+            '\nActores: '+res.data.Actors+
+            '\nRating de imdb: '+res.data.imdbRating+
+            '\nDescripción: '+res.data.Plot	
+            )
+    } catch (error) {
+        console.error(error.message)
+        bot.telegram.sendMessage(ctx.chat.id, error.message)
+    } 
+})
+
+
 bot.hears(['no','no gracias'], (ctx) => {
     ctx.reply('Bueno, si me necesitas aca voy a estar.')
 })
+
 
 bot.launch()
