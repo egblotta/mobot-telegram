@@ -15,7 +15,6 @@ bot.settings((ctx) => ctx.reply('Settings'))
 //responde con el nombre cuando se tipea "hola"
 bot.hears('hola', (ctx) => {
     ctx.reply(`Hola ${ctx.from.first_name}, te gustaria que te recomiende una peli para ver hoy?`)
-    bot.sendMessage(chatID, "Message text", opts);
 })
 
 bot.hears(['si','si gracias', 'bueno', 'dale', 'bueno dale', 'ok'], (ctx) => {
