@@ -9,18 +9,18 @@ const endPoint = 'https://www.omdbapi.com/?t='
 //ctx hace referencia a los datos que se reciben en el chat
 
 bot.start((ctx) => {
-    bot.telegram.sendMessage(ctx.chat.id,`Hola ${ctx.from.first_name}, mi nombre es MoBot\nTe gustaria que te recomiende una peli para ver hoy?` )
+    bot.telegram.sendMessage(ctx.chat.id,`Hola ${ctx.from.first_name}!` )
 })
 
 // /setings
 bot.settings((ctx) => ctx.reply('Settings'))
 
 //responde con el nombre cuando se tipea "hola"
-bot.hears('hola', (ctx) => {
-    ctx.reply(`Hola ${ctx.from.first_name}, te gustaria que te recomiende una peli para ver hoy?`)
+bot.hears(['hola', 'Hola'], (ctx) => {
+    ctx.reply(`Mi nombre es MoBot\nTe gustaria que te recomiende una peli para ver hoy?`)
 })
 
-bot.hears(['si','si gracias', 'bueno', 'dale', 'bueno dale', 'ok'], (ctx) => {
+bot.hears(['si', 'Si','si gracias', 'Si gracias', 'bueno', 'Bueno', 'dale', 'Dale', 'bueno dale', 'bBueno dale', 'ok', 'Ok'], (ctx) => {
     ctx.reply('Genial! que tipos de peli te gustan? Accion, Thriller, Drama, Romance, Comedia, Terror, Animacion')
 })
 
@@ -35,10 +35,11 @@ bot.hears(['Accion', 'accion', 'ACCION'], async (ctx) => {
             '\nRating de imdb: '+res.data.imdbRating+
             '\nDescripción: '+res.data.Plot	
             )
+        bot.telegram.sendMessage(ctx.chat.id,`Querés que te recomiende otra cosa?`)    
     } catch (error) {
         console.error(error.message)
         bot.telegram.sendMessage(ctx.chat.id, error.message)
-    } 
+    }
 })
 
 bot.hears(['Drama', 'drama', 'DRAMA'], async (ctx) => {
@@ -53,6 +54,7 @@ bot.hears(['Drama', 'drama', 'DRAMA'], async (ctx) => {
             '\nRating de imdb: '+res.data.imdbRating+
             '\nDescripción: '+res.data.Plot	
             )
+        bot.telegram.sendMessage(ctx.chat.id,`Querés que te recomiende otra cosa?`)
     } catch (error) {
         console.error(error.message)
         bot.telegram.sendMessage(ctx.chat.id, error.message)
@@ -71,6 +73,7 @@ bot.hears(['Thriller', 'thriller', 'THRILLER'], async (ctx) => {
             '\nRating de imdb: '+res.data.imdbRating+
             '\nDescripción: '+res.data.Plot	
             )
+        bot.telegram.sendMessage(ctx.chat.id,`Querés que te recomiende otra cosa?`)
     } catch (error) {
         console.error(error.message)
         bot.telegram.sendMessage(ctx.chat.id, error.message)
@@ -88,6 +91,7 @@ bot.hears(['Romance', 'romance', 'ROMANCE'], async (ctx) => {
             '\nRating de imdb: '+res.data.imdbRating+
             '\nDescripción: '+res.data.Plot	
             )
+        bot.telegram.sendMessage(ctx.chat.id,`Querés que te recomiende otra cosa?`)
     } catch (error) {
         console.error(error.message)
         bot.telegram.sendMessage(ctx.chat.id, error.message)
@@ -105,6 +109,7 @@ bot.hears(['Comedia', 'comedia', 'COMEDIA'], async (ctx) => {
             '\nRating de imdb: '+res.data.imdbRating+
             '\nDescripción: '+res.data.Plot	
             )
+        bot.telegram.sendMessage(ctx.chat.id,`Querés que te recomiende otra cosa?`)
     } catch (error) {
         console.error(error.message)
         bot.telegram.sendMessage(ctx.chat.id, error.message)
@@ -123,6 +128,7 @@ bot.hears(['Animacion', 'animacion', 'ANIMACION', 'Dibujitos','dibujitos','DIBUJ
             '\nRating de imdb: '+res.data.imdbRating+
             '\nDescripción: '+res.data.Plot	
             )
+        bot.telegram.sendMessage(ctx.chat.id,`Querés que te recomiende otra cosa?`)
     } catch (error) {
         console.error(error.message)
         bot.telegram.sendMessage(ctx.chat.id, error.message)
@@ -142,6 +148,7 @@ bot.hears(['Terror', 'terror', 'TERROR'], async (ctx) => {
             '\nRating de imdb: '+res.data.imdbRating+
             '\nDescripción: '+res.data.Plot	
             )
+        bot.telegram.sendMessage(ctx.chat.id,`Querés que te recomiende otra cosa?`)
     } catch (error) {
         console.error(error.message)
         bot.telegram.sendMessage(ctx.chat.id, error.message)
