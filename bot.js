@@ -19,7 +19,7 @@ bot.hears('hola', (ctx) => {
 })
 
 bot.hears(['si','si gracias', 'bueno', 'dale', 'bueno dale', 'ok'], (ctx) => {
-    ctx.reply('Genial! que tipos de peli te gustan? Accion, Thriller, Drama, Romance, Comedia')
+    ctx.reply('Genial! que tipos de peli te gustan? Accion, Thriller, Drama, Romance, Comedia, Terror')
 })
 
 bot.hears(['Accion', 'accion', 'ACCION'], async (ctx) => {
@@ -112,7 +112,7 @@ bot.hears(['Comedia', 'comedia', 'COMEDIA'], async (ctx) => {
 bot.hears(['Terror', 'terror', 'TERROR'], async (ctx) => {
     
     ctx.reply('Hoy es noche de terror, me gusta la idea! puedo recomendarte lo siguiente: ')
-    const res = await axios.get(endPoint+'the-ring&apikey='+key)
+    const res = await axios.get(endPoint+'host&apikey='+key)
     try {
         bot.telegram.sendMessage(ctx.chat.id, res.data.Poster+
             '\nDirigida por: '+res.data.Director+
