@@ -44,14 +44,21 @@ bot.hears(['Drama', 'drama', 'DRAMA'], async (ctx) => {
 bot.hears(['Thriller', 'thriller', 'THRILLER'], async (ctx) => {
     //console.log(ctx.from)
     ctx.reply('Ahh, eres de los mios, te gusta el miedo, puedo recomendarte lo siguiente: ')
-    const res = await axios.get(`${res.data.Poster}, https://www.omdbapi.com/?t=it&apikey=51c3b968`)
+    const res = await axios.get(`${res.data.Poster}, 'https://www.omdbapi.com/?t=it&apikey=51c3b968`)
     bot.telegram.sendMessage(ctx.chat.id, res.data.Poster)
 })
 
 bot.hears(['Romance', 'romance', 'ROMANCE'], async (ctx) => {
     //console.log(ctx.from)
     ctx.reply('Veo que nos pusimos amorosos! Puedo recomendarte lo siguiente: ')
-    const res = await axios.get(`${res.data.Poster}, http://www.omdbapi.com/?t=Me+after+you&y=2016&plot=full`)
+    const res = await axios.get(`${res.data.Poster}, 'http://www.omdbapi.com/?t=Love%2C+Rosie&apikey=51c3b968`)
+    bot.telegram.sendMessage(ctx.chat.id, res.data.Poster)
+})
+
+bot.hears(['Terror', 'terror', 'TERROR'], async (ctx) => {
+    //console.log(ctx.from)
+    ctx.reply('Hoy es noche de terror! Puedo recomendarte lo siguiente: ')
+    const res = await axios.get(`${res.data.Poster}, 'http://www.omdbapi.com/?t=The+ring&apikey=51c3b968`)
     bot.telegram.sendMessage(ctx.chat.id, res.data.Poster)
 })
 
@@ -60,5 +67,9 @@ bot.hears(['no','no gracias'], (ctx) => {
     ctx.reply('Bueno, si me necesitas aca voy a estar.')
 })
 
+bot.hears(['gracias', 'Gracias'], (ctx) => {
+    //console.log(ctx.from)
+    ctx.reply('Queres que te de otra recomendación?')
+})
 
 bot.launch()
