@@ -7,7 +7,10 @@ const key = process.env.OMDBAPI_KEY;
 const endPoint = 'https://www.omdbapi.com/?t='
 
 //ctx hace referencia a los datos que se reciben en el chat
-bot.start((ctx) => bot.telegram.sendMessage(ctx.chat.id,`Hola ${ctx.from.first_name}, mi nombre es MoBot\nTe gustaria que te recomiende una peli para ver hoy?` ))
+
+bot.start((ctx) => {
+    bot.telegram.sendMessage(ctx.chat.id,`Hola ${ctx.from.first_name}, mi nombre es MoBot\nTe gustaria que te recomiende una peli para ver hoy?` )
+})
 
 // /setings
 bot.settings((ctx) => ctx.reply('Settings'))
@@ -111,11 +114,19 @@ bot.hears(['Comedia', 'comedia', 'COMEDIA'], async (ctx) => {
 bot.hears(['Animacion', 'animacion', 'ANIMACION', 'Dibujitos','dibujitos','DIBUJITOS'], async (ctx) => {
     //console.log(ctx.from)
     ctx.reply('Genial! Son buenísimas para recordar épocas más lindas\nTe recomiendo estas:')
-
-    //peticion asincrona
-    const res = await axios.get('https://www.omdbapi.com/?t=klaus&apikey=51c3b968')
-    //console.log(res.data.Poster)
-    bot.telegram.sendMessage(ctx.chat.id, res.data.Poster)    
+    const res = await axios.get(endPoint+'klaus&apikey='+key)
+    try {
+        bot.telegram.sendMessage(ctx.chat.id, res.data.Poster+
+            '\nDirigida por: '+res.data.Director+
+            '\nAño de estreno: '+res.data.Year+
+            '\nActores: '+res.data.Actors+
+            '\nRating de imdb: '+res.data.imdbRating+
+            '\nDescripción: '+res.data.Plot	
+            )
+    } catch (error) {
+        console.error(error.message)
+        bot.telegram.sendMessage(ctx.chat.id, error.message)
+    }
 })
 
 bot.hears(['no','no gracias'], (ctx) => {
