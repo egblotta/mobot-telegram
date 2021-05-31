@@ -44,7 +44,7 @@ bot.hears(['Accion', 'accion', 'ACCION'], async (ctx) => {
 bot.hears(['Drama', 'drama', 'DRAMA'], async (ctx) => {
     
     ctx.reply('Ideal para un dia como hoy, puedo recomendarte lo siguiente: ')
-    const res = await axios.get(endPoint+'joker&apikey='+key)
+    const res = await axios.get(endPoint+'the+judge&apikey='+key)
     try {
         bot.telegram.sendMessage(ctx.chat.id, res.data.Poster+
             '\nDirigida por: '+res.data.Director+
@@ -62,7 +62,7 @@ bot.hears(['Drama', 'drama', 'DRAMA'], async (ctx) => {
 bot.hears(['Thriller', 'thriller', 'THRILLER'], async (ctx) => {
     
     ctx.reply('Ahh, eres de los mios, te gusta el miedo, puedo recomendarte lo siguiente: ')
-    const res = await axios.get(endPoint+'it&apikey='+key)
+    const res = await axios.get(endPoint+"devil's&apikey="+key)
     try {
         bot.telegram.sendMessage(ctx.chat.id, res.data.Poster+
             '\nDirigida por: '+res.data.Director+
@@ -96,7 +96,7 @@ bot.hears(['Romance', 'romance', 'ROMANCE'], async (ctx) => {
 
 bot.hears(['Comedia', 'comedia', 'COMEDIA'], async (ctx) => {
     ctx.reply('Para disfrutar con la familia o entre amigos, puedo recomendarte lo siguiente: ')
-    const res = await axios.get(endPoint+'minions&apikey='+key)
+    const res = await axios.get(endPoint+'white+chicks&apikey='+key)
     try {
         bot.telegram.sendMessage(ctx.chat.id, res.data.Poster+
             '\nDirigida por: '+res.data.Director+
